@@ -3,8 +3,12 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     server: {
-        // Permite que el celular (origen http://192.168.1.x:8080) cargue los módulos JS del servidor Vite
-        cors: true,
+        host: '0.0.0.0', // Permite escuchar conexiones de toda la red local
+        port: 5174,
+        cors: true,       // Habilita cabeceras Access-Control-Allow-Origin
+        hmr: {
+            host: '192.168.1.7', // Tu IP local exacta para la recarga en caliente
+        },
     },
     plugins: [
         laravel({
