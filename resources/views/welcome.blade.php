@@ -22,6 +22,14 @@
 </head>
 <body class="bg-halloween text-bone font-montserrat antialiased selection:bg-[#FF7518] selection:text-white" x-data="{ modalOpen: false, selectedGiftId: null, selectedGiftName: '' }">
 
+    <!-- Enlace discreto de administración -->
+    <div class="absolute top-4 right-4 z-50">
+        @auth
+            <a href="{{ route('admin.dashboard') }}" class="text-[#FF7518] hover:text-white font-bold text-sm tracking-widest transition">Panel del Rey Calabaza</a>
+        @else
+            <a href="{{ route('login') }}" class="text-gray-900 hover:text-gray-700 text-xs transition">Acceso</a>
+        @endauth
+    </div>
     <!-- Hero Section -->
     <header class="relative flex flex-col items-center justify-center min-h-[60vh] text-center px-4 border-b border-[#4A0E4E]">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 pointer-events-none"></div>
