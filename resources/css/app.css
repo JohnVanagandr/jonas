@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-nightmare { font-family: 'NightmareFont', system-ui, sans-serif; }
+
+/* 2. Forzar contraste en Autocompletado */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #111827 inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+[x-cloak] { display: none !important; }
+
+/* 3. Animaciones generales */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* 4. ESTILO CONTRATO / PAPEL DEL MÁS ALLÁ */
+.contract-card {
+    background-color: #13151b;
+    background-image: radial-gradient(rgba(255, 117, 24, 0.03) 1px, transparent 0);
+    background-size: 16px 16px;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* 5. Animación de revelado (visible en móviles, con cascada en PC) */
+.reveal-card {
+    opacity: 1;
+    transform: none;
+}
+
+@media (min-width: 1024px) {
+    .reveal-card {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        transition-delay: var(--card-delay, 0ms);
+    }
+    .reveal-card.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

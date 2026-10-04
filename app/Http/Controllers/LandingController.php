@@ -10,7 +10,7 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $gifts = Gift::all();
+        $gifts = Gift::whereNull('guest_id')->get();
         return view('welcome', compact('gifts'));
     }
 
