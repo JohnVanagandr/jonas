@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\GiftController;
 use App\Http\Controllers\Admin\GuestController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Guest;
+use App\Models\Gift;
 
 // Rutas Públicas (Las conectaremos en el Frontend)
 Route::get('/', [LandingController::class, 'index'])->name('home');
@@ -14,9 +16,13 @@ Route::post('/rsvp', [LandingController::class, 'confirmAttendance'])->name('rsv
 // Rutas de Administración Protegidas
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     
-    // Dashboard principal del administrador
+    // Dashboard principal del administrador con métricas
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $totalGuests = Guest::count();
+        $claimedGifts = Gift::whereNotNull('guest_id')->count();
+        $totalGifts = Gift::count();
+
+        return view('dashboard', compact('totalGuests', 'claimedGifts', 'totalGifts'));
     })->name('dashboard');
 
     // CRUD de Regalos

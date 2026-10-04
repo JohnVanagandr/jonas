@@ -15,14 +15,18 @@ class RsvpService
     public function confirmAttendanceAndSelectGift(array $data)
     {
         return DB::transaction(function () use ($data) {
-            // Buscamos al invitado por su teléfono (identificador único) o lo creamos
+            // Buscamos al invitado por su teléfono o lo creamos
             $guest = Guest::firstOrCreate(
                 ['phone' => $data['phone']],
                 ['name' => $data['name'], 'attendance_status' => true]
             );
 
-            // Verificamos si la petición incluye la selección de un regalo
             if (isset($data['gift_id'])) {
+                // NUEVA REGLA: Verificar si el espectro ya acaparó un regalo previamente
+                if ($guest->gifts()->exists()) {
+                    throw new Exception("¡Avaricia fantasmal! Ya has asegurado un regalo con este número de teléfono.");
+                }
+
                 // Bloqueo de fila para evitar condiciones de carrera
                 $gift = Gift::where('id', $data['gift_id'])->lockForUpdate()->first();
 

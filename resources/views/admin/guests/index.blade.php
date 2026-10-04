@@ -25,7 +25,7 @@
                                     <td class="p-3">{{ $guest->name }}</td>
                                     <td class="p-3">{{ $guest->phone }}</td>
                                     <td class="p-3 text-purple-600 font-semibold">
-                                        {{ $guest->gifts->first()->name ?? 'Sin regalo' }}
+                                        {{ $guest->gifts->count() > 0 ? $guest->gifts->pluck('name')->join(', ') : 'Sin regalo' }}
                                     </td>
                                     <td class="p-3 text-sm text-gray-500">{{ $guest->created_at->format('d/m/Y h:i A') }}</td>
                                 </tr>

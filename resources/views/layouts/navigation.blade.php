@@ -20,6 +20,11 @@
                     <x-nav-link :href="route('admin.guests.index')" :active="request()->routeIs('admin.guests.*')">
                         {{ __('Invitados') }}
                     </x-nav-link>
+
+                    <!-- NUEVO ENLACE: Regalos -->
+                    <x-nav-link :href="route('admin.gifts.index')" :active="request()->routeIs('admin.gifts.*')">
+                        {{ __('Regalos') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -78,6 +83,11 @@
             
             <x-responsive-nav-link :href="route('admin.guests.index')" :active="request()->routeIs('admin.guests.*')">
                 {{ __('Invitados') }}
+            </x-responsive-nav-link>
+
+            <!-- NUEVO ENLACE MÓVIL: Regalos -->
+            <x-responsive-nav-link :href="route('admin.gifts.index')" :active="request()->routeIs('admin.gifts.*')">
+                {{ __('Regalos') }}
             </x-responsive-nav-link>
         </div>
 
