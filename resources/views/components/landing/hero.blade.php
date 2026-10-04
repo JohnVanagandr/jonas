@@ -22,15 +22,15 @@
         <!-- Contenedor de etiquetas espaciado con fecha, hora, lugar y código de vestimenta -->
         <div class="flex flex-wrap items-center gap-3 sm:gap-6 text-gray-200 font-medium text-sm md:text-base mb-8 bg-[#15181f]/85 backdrop-blur-md px-6 py-4 rounded-2xl border border-gray-800/60 shadow-2xl max-w-fit animate-fade-in" style="animation-delay: 0.2s;">
             <div class="flex items-center gap-2">
-                <span class="text-[#FF7518] font-bold">Domingo, 01 Nov</span>
+                <span class="font-bold">Domingo, 01 Nov</span>
             </div>
             <span class="hidden sm:inline w-1 h-1 bg-gray-500 rounded-full"></span>
             <div class="flex items-center gap-2">
-                <span class="text-[#FF7518] font-bold">3:30 PM</span>
+                <span class="font-bold">3:30 PM</span>
             </div>
             <span class="hidden sm:inline w-1 h-1 bg-gray-500 rounded-full"></span>
             <div class="flex items-center gap-2">
-                <span>Sede Recreacional CorpoSena Girón</span>
+                <span class="">Sede Recreacional CorpoSena Girón</span>
             </div>
             <span class="hidden sm:inline w-1 h-1 bg-gray-500 rounded-full"></span>
             <div class="flex items-center gap-2">

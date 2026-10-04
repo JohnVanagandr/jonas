@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
         // Creamos al Rey Calabaza (Administrador)
         User::factory()->create([
             'name' => 'Rey Calabaza',
-            'email' => 'admin@halloweentown.com',
-            'password' => Hash::make('Jack1234!'),
+            'email' => 'jfbeccera@gmail.com',
+            'password' => Hash::make('JonasBecerra'),
         ]);
 
         // Ejecutamos nuestros 100 regalos mágicos
