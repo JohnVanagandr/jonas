@@ -1,18 +1,15 @@
 <?php
 
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\GiftController;
 use App\Http\Controllers\Admin\GuestController;
 use Illuminate\Support\Facades\Route;
 
 // Rutas Públicas (Las conectaremos en el Frontend)
-Route::get('/', function () {
-    return view('welcome'); // Cambiaremos esto por nuestra landing temática pronto
-})->name('home');
+Route::get('/', [LandingController::class, 'index'])->name('home');
 
-Route::post('/rsvp', function () {
-    // Aquí inyectaremos el RsvpService más adelante
-})->name('rsvp.confirm');
+Route::post('/rsvp', [LandingController::class, 'confirmAttendance'])->name('rsvp.confirm');
 
 // Rutas de Administración Protegidas
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
