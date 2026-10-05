@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{asset('img/icono.png')}}">
 
-    
+
     <!-- Componente SEO -->
     <x-landing.seo />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+
     <!-- Vite carga automáticamente el CSS y el JS que acabamos de separar -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -26,7 +26,7 @@
         }
     </style>
 </head>
-<body class="bg-[#0f1115] text-gray-100 font-outfit antialiased selection:bg-[#FF7518] selection:text-white" 
+<body class="bg-[#0f1115] text-gray-100 font-outfit antialiased selection:bg-[#FF7518] selection:text-white"
       x-data="nightmareApp()">
 
     <!-- Audios -->
@@ -34,8 +34,8 @@
     <audio x-ref="clickSfx" preload="auto"><source src="{{ asset('sounds/mysterious.wav') }}" type="audio/mpeg"></audio>
 
     <!-- Imagen de fondo -->
-    <div class="fixed inset-0 z-[-2] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-linear transform hover:scale-105" 
-         style="background-image: url('{{ asset('img/fondo.jpg') }}');">
+    <div class="fixed inset-0 z-[-2] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-linear transform hover:scale-105"
+         style="background-image: url('{{ asset('img/fondo.jpeg') }}');">
     </div>
     <div class="fixed inset-0 z-[-1] bg-[#0f1115]/85 backdrop-blur-[2px]"></div>
 

@@ -1,7 +1,7 @@
 @props([
     'title' => 'Baby Shower - Jonas Samuel',
     'description' => 'Acompáñanos a celebrar la llegada de nuestro pequeño en una tarde llena de misterio y ternura. Confirma tu asistencia.',
-    'image' => asset('img/fondo.jpg'), 
+    'image' => asset('img/fondo.jpeg'),
     'url' => request()->url()
 ])
 
