@@ -44,19 +44,7 @@
     <x-landing.hero />
     <x-landing.gifts-section :gifts="$gifts" />
     <x-landing.rsvp-modal />
+    <x-landing.check-attendance-modal />
     <x-landing.scroll-top />
-
-    <!-- Alertas -->
-    @if (session('success'))
-        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 5000)" class="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-[#15181f] border border-green-500 text-white px-8 py-4 rounded-full shadow-2xl flex items-center gap-3 animate-fade-in">
-            <span class="font-bold text-sm uppercase tracking-widest">{{ session('success') }}</span>
-        </div>
-    @endif
-    @if (session('error'))
-        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 5000)" class="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-[#15181f] border border-red-500 text-white px-8 py-4 rounded-full shadow-2xl flex items-center gap-3 animate-fade-in">
-            <span class="font-bold text-sm uppercase tracking-widest">{{ session('error') }}</span>
-        </div>
-    @endif
-
 </body>
 </html>

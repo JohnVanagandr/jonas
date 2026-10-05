@@ -4,6 +4,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\GiftController;
 use App\Http\Controllers\Admin\GuestController;
+use App\Http\Controllers\PublicAttendanceController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Guest;
 use App\Models\Gift;
@@ -12,6 +13,8 @@ use App\Models\Gift;
 Route::get('/', [LandingController::class, 'index'])->name('home');
 
 Route::post('/rsvp', [LandingController::class, 'confirmAttendance'])->name('rsvp.confirm');
+
+Route::post('/consultar-asistencia', [PublicAttendanceController::class, 'check'])->name('attendance.check');
 
 // Rutas de Administración Protegidas
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {

@@ -55,5 +55,13 @@
                 <span x-text="musicPlaying ? 'Pausar Banda Sonora' : 'Reproducir Banda Sonora'"></span>
             </button>
         </div>
+
+        <!-- NUEVO BOTÓN: Enlace sutil para consultar asistencia -->
+        <div class="mt-8 animate-fade-in" style="animation-delay: 0.5s;">
+            <button @click="$dispatch('open-check-modal')" class="text-sm text-gray-400 hover:text-[#FF7518] transition-colors underline underline-offset-4 decoration-gray-600 hover:decoration-[#FF7518]">
+                ¿Ya confirmaste y olvidaste tu regalo? Consúltalo aquí.
+            </button>
+        </div>
+
     </div>
 </header>

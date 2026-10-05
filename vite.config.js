@@ -7,7 +7,7 @@ export default defineConfig({
         port: 5174,
         cors: true,       // Habilita cabeceras Access-Control-Allow-Origin
         hmr: {
-            host: '192.168.1.7', // Tu IP local exacta para la recarga en caliente
+            host: '192.168.1.8', // Tu IP local exacta para la recarga en caliente
         },
     },
     plugins: [
