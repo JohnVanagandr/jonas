@@ -24,7 +24,7 @@ class RsvpService
             if (isset($data['gift_id'])) {
                 // NUEVA REGLA: Verificar si el espectro ya acaparó un regalo previamente
                 if ($guest->gifts()->exists()) {
-                    throw new Exception("¡Avaricia fantasmal! Ya has asegurado un regalo con este número de teléfono.");
+                    throw new Exception("¡Elegria fantasmal! Ya has asegurado un regalo con este número de teléfono.");
                 }
 
                 // Bloqueo de fila para evitar condiciones de carrera

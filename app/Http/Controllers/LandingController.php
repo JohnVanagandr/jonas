@@ -24,7 +24,7 @@ class LandingController extends Controller
 
         try {
             $rsvpService->confirmAttendanceAndSelectGift($validated);
-            return redirect()->route('home')->with('success', '¡Pacto sellado! Has asegurado tu regalo.');
+            return redirect()->route('home')->with('success', '¡Tu obsequio ha quedado registrado!');
         } catch (\Exception $e) {
             // Captura los errores (ej. si el regalo fue tomado milisegundos antes)
             return redirect()->route('home')->with('error', $e->getMessage());
