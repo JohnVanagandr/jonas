@@ -19,10 +19,25 @@
                             @error('name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="mb-6">
+                        <div class="mb-4">
                             <label for="description" class="block text-sm font-medium text-gray-700">Descripción (Opcional)</label>
                             <textarea name="description" id="description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"></textarea>
                             @error('description') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                        </div>
+
+                        <!-- NUEVO: Campo para la URL -->
+                        <div class="mb-4">
+                            <label for="url" class="block text-sm font-medium text-gray-700">Enlace de Referencia (Opcional)</label>
+                            <input type="url" name="url" id="url" placeholder="https://ejemplo.com/producto" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                            @error('url') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                        </div>
+
+                        <!-- NUEVO: Campo para el Stock -->
+                        <div class="mb-6">
+                            <label for="stock" class="block text-sm font-medium text-gray-700">Cupos Disponibles (Stock)</label>
+                            <input type="number" name="stock" id="stock" value="1" min="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                            <p class="text-xs text-gray-500 mt-1">Cantidad de personas diferentes que pueden elegir este mismo regalo.</p>
+                            @error('stock') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
 
                         <div class="flex justify-end gap-4">

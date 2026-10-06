@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Guest extends Model
 {
@@ -13,8 +13,8 @@ class Guest extends Model
         'attendance_status',
     ];
 
-    public function gifts(): HasMany
+    public function gifts(): BelongsToMany
     {
-        return $this->hasMany(Gift::class);
+        return $this->belongsToMany(Gift::class)->withTimestamps();
     }
 }
