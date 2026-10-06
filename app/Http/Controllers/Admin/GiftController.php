@@ -11,7 +11,8 @@ class GiftController extends Controller
     public function index()
     {
         // Cargamos los regalos junto con el invitado que lo reservó (si existe)
-        $gifts = Gift::with('guest')->orderBy('created_at', 'desc')->paginate(10);
+        $gifts = Gift::with('guests')->orderBy('created_at', 'desc')->paginate(10);
+    
         return view('admin.gifts.index', compact('gifts'));
     }
 
@@ -25,12 +26,13 @@ class GiftController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|string', // Si decides subir imágenes luego, ajustarías a 'image|mimes:jpeg,png,jpg'
+            'url' => 'nullable|url|max:255',
+            'stock' => 'required|integer|min:1',
         ]);
 
         Gift::create($validated);
 
-        return redirect()->route('admin.gifts.index')->with('success', 'Nuevo regalo materializado en la lista.');
+        return redirect()->route('admin.gifts.index')->with('success', 'Regalo materializado con éxito.');
     }
 
     public function edit(Gift $gift)
@@ -43,12 +45,13 @@ class GiftController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|string',
+            'url' => 'nullable|url|max:255',
+            'stock' => 'required|integer|min:1',
         ]);
 
         $gift->update($validated);
 
-        return redirect()->route('admin.gifts.index')->with('success', 'Regalo actualizado correctamente.');
+        return redirect()->route('admin.gifts.index')->with('success', 'Regalo actualizado con éxito.');
     }
 
     public function destroy(Gift $gift)

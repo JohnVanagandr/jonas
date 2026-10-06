@@ -18,29 +18,31 @@ class RsvpService
             // Buscamos al invitado por su teléfono o lo creamos
             $guest = Guest::firstOrCreate(
                 ['phone' => $data['phone']],
-                ['name' => $data['name'], 'attendance_status' => true]
+                ['name' => $data['name'], 'attendance_status' => true] //
             );
 
             if (isset($data['gift_id'])) {
                 // NUEVA REGLA: Verificar si el espectro ya acaparó un regalo previamente
                 if ($guest->gifts()->exists()) {
-                    throw new Exception("¡Elegria fantasmal! Ya has asegurado un regalo con este número de teléfono.");
+                    throw new Exception("¡Alegoría fantasmal! Ya has asegurado un regalo con este número de teléfono."); //[cite: 10]
                 }
 
-                // Bloqueo de fila para evitar condiciones de carrera
-                $gift = Gift::where('id', $data['gift_id'])->lockForUpdate()->first();
+                // Bloqueo de fila para evitar condiciones de carrera[cite: 10]
+                $gift = Gift::lockForUpdate()->find($data['gift_id']);
 
                 if (!$gift) {
-                    throw new Exception("El regalo seleccionado no existe en nuestra dimensión.");
+                    throw new Exception("El regalo seleccionado no existe en nuestra dimensión."); //[cite: 10]
                 }
 
-                if ($gift->guest_id !== null) {
-                    throw new Exception("¡Qué pesadilla! Algún otro espectro acaba de reclamar este regalo.");
+                // NUEVA LÓGICA: Validar contra el stock disponible en lugar de un único guest_id
+                $currentReservations = $gift->guests()->count();
+
+                if ($currentReservations >= $gift->stock) {
+                    throw new Exception("¡Qué pesadilla! Algún otro espectro acaba de reclamar el último cupo de este regalo.");
                 }
 
-                // Vinculamos el regalo al invitado
-                $gift->guest_id = $guest->id;
-                $gift->save();
+                // NUEVA LÓGICA: Vinculamos el regalo al invitado usando la tabla intermedia (attach)
+                $guest->gifts()->attach($gift->id);
             }
 
             return $guest;

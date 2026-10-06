@@ -10,7 +10,14 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $gifts = Gift::whereNull('guest_id')->get();
+        // 1. Cargamos todos los regalos y contamos cuántos invitados lo han reservado
+        // 2. Filtramos (desaparecemos) aquellos donde las reservas ya alcanzaron o superaron el stock
+        $gifts = Gift::withCount('guests')
+            ->get()
+            ->filter(function ($gift) {
+                return $gift->guests_count < $gift->stock;
+            });
+
         return view('welcome', compact('gifts'));
     }
 
